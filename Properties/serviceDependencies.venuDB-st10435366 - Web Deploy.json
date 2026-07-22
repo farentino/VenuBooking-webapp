@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "storage1": {
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('serviceConnectorResourceGroupName')]/providers/Microsoft.Web/sites/venuDB-st10435366/providers/Microsoft.ServiceLinker/linkers/StorageConnection_06BDF530F9, /subscriptions/d29f6de8-12ec-43e4-b557-952b099ebffb/resourceGroups/st10435366/providers/Microsoft.Web/sites/venuDB-st10435366/providers/Microsoft.ServiceLinker/linkers/StorageConnection_8A468112B7",
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Storage/storageAccounts/venubookingst10435366",
+      "type": "storage.azure",
+      "connectionId": "StorageConnection",
+      "dynamicId": null
+    }
+  }
+}

@@ -1,0 +1,37 @@
+﻿@model IEnumerable<VenuBooking.Models.Event>
+
+<h1>Events</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Event</a>
+</p>
+
+<table class="table table-bordered table-striped align-middle">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Event Type</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Image</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.EventID</td>
+                <td>@item.Name</td>
+                <td>@item.EventType?.Name</td>
+                <td>@item.StartDate.ToShortDateString()</td>
+                <td>@item.EndDate.ToShortDateString()</td>
+                <td>
+                    <img src="@item.ImageURL"
+                         style="width:150px; height:100px; object-fit:cover; border-radius:10px;" />
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

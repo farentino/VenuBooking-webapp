@@ -1,0 +1,110 @@
+﻿@model IEnumerable<VenuBooking.Models.Venue>
+
+@{
+    ViewData["Title"] = "Venues";
+}
+
+<h1>Venues</h1>
+<form method="get" class="mb-3">
+    <div class="row">
+        <div class="col-md-6">
+            <input type="text"
+                   name="search"
+                   value="@ViewBag.Search"
+                   class="form-control"
+                   placeholder="Search venue by name or location" />
+        </div>
+
+        <div class="col-md-3">
+            <button type="submit" class="btn btn-secondary">Search</button>
+            <a asp-action="Index" class="btn btn-outline-secondary">Clear</a>
+        </div>
+    </div>
+</form>
+<p>
+    <a asp-action="Create" class="btn btn-primary">
+        Create New Venue
+    </a>
+</p>
+
+<table class="table table-bordered table-striped align-middle">
+
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Capacity</th>
+            <th>Image</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>@item.VenueID</td>
+
+                <td>@item.Name</td>
+
+                <td>@item.Location</td>
+
+                <td>@item.Capacity</td>
+
+                <td>
+                    @if (!string.IsNullOrEmpty(item.ImageURL))
+                    {
+                        @if (item.ImageURL.StartsWith("http"))
+                        {
+                            <img src="@item.ImageURL"
+                                 style="
+                            width:180px;
+                            height:140px;
+                            object-fit:cover;
+                            border-radius:10px;
+                            "
+                                 alt="Venue image" />
+                        }
+                        else
+                        {
+                            <img src="@Url.Action("Image", "Blob", new { fileName = item.ImageURL })"
+                                 style="
+                            width:180px;
+                            height:140px;
+                            object-fit:cover;
+                            border-radius:10px;
+                            "
+                                 alt="Venue image" />
+                        }
+                    }
+                    else
+                    {
+                        <img src="https://picsum.photos/201"
+                             style="
+                        width:180px;
+                        height:140px;
+                        object-fit:cover;
+                        border-radius:10px;
+                        "
+                             alt="Default image" />
+                    }
+                </td>
+
+                <td>
+                    <a asp-action="Delete"
+                           asp-route-id="@item.VenueID"
+                           class="btn btn-danger btn-sm">
+                        Delete
+                    </a>
+                </td>
+
+            </tr>
+        }
+
+    </tbody>
+
+</table>

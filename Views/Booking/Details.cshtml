@@ -1,0 +1,14 @@
+﻿@model VenuBooking.Models.Booking
+
+<h2>Booking Details</h2>
+
+<div>
+    <p><strong>ID:</strong> @Model.BookingID</p>
+    <p><strong>Venue:</strong> @Model.Venue?.Name</p>
+    <p><strong>Event:</strong> @Model.Event?.Name</p>
+    <p><strong>Date:</strong> @Model.BookingDate.ToShortDateString()</p>
+</div>
+
+<p>
+    <a asp-action="Index">Back</a>
+</p>

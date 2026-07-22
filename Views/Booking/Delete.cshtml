@@ -1,0 +1,17 @@
+﻿@model VenuBooking.Models.Booking
+
+<h2>Delete Booking</h2>
+
+<h4>Are you sure you want to delete this?</h4>
+
+<div>
+    <p><strong>Venue:</strong> @Model.Venue?.Name</p>
+    <p><strong>Event:</strong> @Model.Event?.Name</p>
+    <p><strong>Date:</strong> @Model.BookingDate.ToShortDateString()</p>
+</div>
+
+<form asp-action="DeleteConfirmed">
+    <input type="hidden" asp-for="BookingID" />
+    <button type="submit">Delete</button>
+    <a asp-action="Index">Cancel</a>
+</form>
